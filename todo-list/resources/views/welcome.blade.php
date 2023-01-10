@@ -22,10 +22,14 @@
     </head>
     <body class="antialiased" style="background-color: #2e3136; color: white; text-align: center">
 
-    <h1>Todo list</h1>
-    <label for="listItem">New todo item</label></body> </br>
-    <input type="text" name="listItem"> </br>
-    <button type="submit">save item</button>
+        <h1>Todo list</h1>
+            <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
+                {{ csrf_field()  }}
+
+                <label for="listItem">New todo item</label> </br>
+                <input type="text" name="listItem"> </br>
+                <button type="submit">save item</button>
+            </form>
 
     </body>
 </html>
