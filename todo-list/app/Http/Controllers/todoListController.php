@@ -13,7 +13,7 @@ class todoListController extends Controller
     function saveItem(Request $request) {
         $newListItem = new ListItem;
         $newListItem->name = $request->listItem;
-        $newListItem->is_done = 0;
+        $newListItem->is_done = false;
         $newListItem->save();
 
         return view('welcome', ['listItems' => ListItem::all()]);

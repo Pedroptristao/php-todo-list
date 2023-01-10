@@ -24,8 +24,11 @@
 
         <h1>Todo list</h1>
 
-            @foreach($listItems as $listItem)
-                <p>Item: {{ $listItem->name }}</p>
+            @foreach($listItems as $key=>$listItem)
+                <div>
+                    <p>Item: {{ $listItem->name }}</p>
+                    <button type="submit">Mark as done</button>
+                </div>
             @endforeach
 
             <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
