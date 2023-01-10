@@ -14,7 +14,5 @@ use App\Http\Controllers\todoListController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [todoListController::class, 'renderList']);
 Route::post('/saveItem', [todoListController::class, 'saveItem'])->name('saveItem');

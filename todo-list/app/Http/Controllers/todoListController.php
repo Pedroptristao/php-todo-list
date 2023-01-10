@@ -7,12 +7,15 @@ use App\Models\ListItem;
 
 class todoListController extends Controller
 {
+    function renderList() {
+        return view('welcome', ['listItems' => ListItem::all()]);
+    }
     function saveItem(Request $request) {
         $newListItem = new ListItem;
-        $newListItem->name =$request->listItem;
+        $newListItem->name = $request->listItem;
         $newListItem->is_done = 0;
         $newListItem->save();
 
-        return view('welcome');
+        return view('welcome', ['listItems' => ListItem::all()]);
     }
 }
