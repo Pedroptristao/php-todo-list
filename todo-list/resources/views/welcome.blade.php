@@ -25,11 +25,19 @@
         <h1>Todo list</h1>
 
             @foreach($listItems as $key=>$listItem)
-                <form method="post" action="{{ route('markComplete', $listItem->id) }}" accept-charset="UTF-8">
-                    {{ csrf_field()  }}
-                    <p>Item: {{ $listItem->name }}</p>
-                    <button type="submit">Mark as done</button>
-                </form>
+                    @if($listItem->is_done == 0)
+                        <form method="post" action="{{ route('markComplete', $listItem->id) }}" accept-charset="UTF-8">
+                            {{ csrf_field()  }}
+                            <p>Item: {{ $listItem->name }}</p>
+                            <button type="submit">Mark as done</button>
+                        </form>
+                    @else
+                        <form method="post" action="{{ route('deleteTask', $listItem->id) }}" accept-charset="UTF-8">
+                            {{ csrf_field()  }}
+                            <p>Item: {{ $listItem->name }}</p>
+                            <button type="submit">Delete</button>
+                        </form>
+                    @endif
             @endforeach
 
             <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
@@ -38,6 +46,9 @@
                 <label for="listItem">New todo item</label> </br>
                 <input type="text" name="listItem"> </br>
                 <button type="submit">save item</button>
+            </form>
+            <form method="get" action="{{ route('doneTasks') }}">
+                <button type="submit">done tasks</button>
             </form>
 
     </body>

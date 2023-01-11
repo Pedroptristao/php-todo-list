@@ -10,6 +10,9 @@ class todoListController extends Controller
     function renderList() {
         return view('welcome', ['listItems' => ListItem::where('is_done', 0)->get()]);
     }
+    function renderListDone() {
+        return view('welcome', ['listItems' => ListItem::where('is_done', 1)->get()]);
+    }
     function saveItem(Request $request) {
         $newListItem = new ListItem;
         $newListItem->name = $request->listItem;
@@ -24,5 +27,11 @@ class todoListController extends Controller
         $listItem->save();
 
         return redirect('/');
+    }
+    function deleteTask($id) {
+        $listItem = ListItem::find($id);
+        $listItem->delete();
+
+        return redirect('/doneTasks');
     }
 }
