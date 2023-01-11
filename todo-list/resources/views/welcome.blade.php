@@ -25,10 +25,11 @@
         <h1>Todo list</h1>
 
             @foreach($listItems as $key=>$listItem)
-                <div>
+                <form method="post" action="{{ route('markComplete', $listItem->id) }}" accept-charset="UTF-8">
+                    {{ csrf_field()  }}
                     <p>Item: {{ $listItem->name }}</p>
                     <button type="submit">Mark as done</button>
-                </div>
+                </form>
             @endforeach
 
             <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">

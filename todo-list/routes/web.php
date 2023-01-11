@@ -16,3 +16,4 @@ use App\Http\Controllers\todoListController;
 
 Route::get('/', [todoListController::class, 'renderList']);
 Route::post('/saveItem', [todoListController::class, 'saveItem'])->name('saveItem');
+Route::post('markComplete/{id}', [todoListController::class, 'markComplete'])->name('markComplete');
